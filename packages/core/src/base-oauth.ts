@@ -25,6 +25,10 @@ export class BaseOAuth {
     throw new TypeError('It must be implemented.')
   }
 
+  buildScopes(scopes: string[]): string {
+    return scopes.join(',')
+  }
+
   /**
    * @see https://tools.ietf.org/html/rfc6749#section-2.3.1
    * @see https://tools.ietf.org/html/rfc6749#section-4.1.3 (remove grant_type)
@@ -67,7 +71,7 @@ export class BaseOAuth {
       clientId: this.options.clientId,
       redirectUri: this.options.redirectUri,
       state,
-      // scope: '',
+      scope: this.options.scope ? this.buildScopes(Array.isArray(this.options.scope) ? this.options.scope : [this.options.scope]) : null,
     })
   }
 

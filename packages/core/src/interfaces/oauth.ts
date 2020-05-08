@@ -10,6 +10,7 @@ export interface OAuthOptions {
   clientSecret: string
   redirectUri: string
   code?: string
+  scope?: string[] | string
 }
 
 export interface AccessToken {
