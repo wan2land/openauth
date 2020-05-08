@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "lerna run build",
-    "test": "npm run build && npm run test:lint && npm run test:unit",
+    "test": "npm run test:lint && npm run test:unit",
     "test:lint": "eslint 'packages/*/src/**/*.ts'",
     "test:unit": "jest",
     "deploy": "npm run test && lerna publish from-package"
@@ -27,6 +27,7 @@
     "jest": "25.3.0",
     "lerna": "3.20.2",
     "lerna-update-wizard": "0.17.8",
+    "lerna-wizard": "^1.1.1",
     "rimraf": "3.0.2",
     "ts-jest": "25.3.1",
     "typescript": "3.8.3"

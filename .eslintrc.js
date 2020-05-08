@@ -13,4 +13,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: ['./tsconfig.json'],
   },
+  rules: {
+    '@typescript-eslint/explicit-member-accessibility': ['error', { accessibility: 'no-public' }],
+  },
 }
