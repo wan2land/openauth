@@ -1,4 +1,4 @@
-import { AuthUser, BaseOAuth, OAuth } from '@openauth/core'
+import { AuthUser, BaseOAuth, Client, OAuth } from '@openauth/core'
 
 export interface FacebookOAuthOptions {
   version?: string
@@ -12,8 +12,8 @@ export class FacebookOAuth extends BaseOAuth implements OAuth {
 
   version: string
 
-  constructor(options: FacebookOAuthOptions) {
-    super(options)
+  constructor(options: FacebookOAuthOptions, client?: Client) {
+    super(options, client)
     this.version = options.version ?? 'v7.0'
   }
 
