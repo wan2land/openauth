@@ -1,12 +1,13 @@
 {
   "name": "@openauth/facebook",
   "version": "0.0.0",
-  "description": "OpenAuth facebook",
+  "description": "OAuth facebook library.",
   "keywords": [
     "facebook",
     "openauth",
     "oauth",
     "socialite",
+    "passport",
     "typescript"
   ],
   "author": "Changwan Jun <wan2land@gmail.com>",

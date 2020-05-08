@@ -7,10 +7,6 @@
       "es2017",
       "esnext.asynciterable"
     ],
-    "baseUrl": "./packages",
-    "paths": {
-      "@openauth/core": ["core/src"]
-    },
     "emitDeclarationOnly": true,
     "declaration": true,
     "pretty": true,

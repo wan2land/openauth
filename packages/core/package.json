@@ -1,11 +1,12 @@
 {
   "name": "@openauth/core",
   "version": "0.0.0",
-  "description": "OpenAuth core",
+  "description": "OAuth core library.",
   "keywords": [
     "openauth",
     "oauth",
     "socialite",
+    "passport",
     "typescript"
   ],
   "author": "Changwan Jun <wan2land@gmail.com>",
