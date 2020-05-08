@@ -1,8 +1,8 @@
 
 export interface OAuth {
   getAuthRequestUri(): string
-  getAccessTokenResponse(code: string): Promise<AccessToken>
-  getAuthUser(token: AccessToken): Promise<AuthUser>
+  getAccessTokenResponse(code: string): Promise<AccessTokenResponse>
+  getAuthUser(accessToken: string): Promise<AuthUser>
 }
 
 export interface OAuthOptions {
@@ -13,7 +13,7 @@ export interface OAuthOptions {
   scope?: string[] | string
 }
 
-export interface AccessToken {
+export interface AccessTokenResponse {
   accessToken: string
   tokenType: string
   expiresIn?: number

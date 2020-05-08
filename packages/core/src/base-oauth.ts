@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { createUri, underscoreToCamel } from './helpers'
-import { AccessToken, AuthUser, OAuthOptions } from './interfaces/oauth'
+import { AccessTokenResponse, AuthUser, OAuthOptions } from './interfaces/oauth'
 
 export class BaseOAuth {
 
@@ -46,17 +46,17 @@ export class BaseOAuth {
   /**
    * @see https://tools.ietf.org/html/rfc6749#section-4.1.4
    */
-  buildAccessTokenResponse(body: Record<string, any>): AccessToken {
-    return underscoreToCamel(body) as AccessToken
+  buildAccessTokenResponse(body: Record<string, any>): AccessTokenResponse {
+    return underscoreToCamel(body) as AccessTokenResponse
   }
 
   buildAuthUserResponse(body: Record<string, any>): AuthUser {
     return underscoreToCamel(body) as AuthUser
   }
 
-  async authGet(token: AccessToken, path: string, params: Record<string, any> = {}): Promise<Record<string, any>> {
+  async authGet(accessToken: string, path: string, params: Record<string, any> = {}): Promise<Record<string, any>> {
     const { data } = await axios.get(createUri(this.apiRequestUri(path), {
-      accessToken: token.accessToken,
+      accessToken,
       ...params,
     }))
     return underscoreToCamel(data)
@@ -75,11 +75,11 @@ export class BaseOAuth {
     })
   }
 
-  async getAccessTokenResponse(code: string): Promise<AccessToken> {
+  async getAccessTokenResponse(code: string): Promise<AccessTokenResponse> {
     return this.buildAccessTokenResponse(await this.requestAccessToken(code))
   }
 
-  async getAuthUser(token: AccessToken): Promise<AuthUser> {
-    return this.buildAuthUserResponse(await this.authGet(token, this.authUserPath()))
+  async getAuthUser(accessToken: string): Promise<AuthUser> {
+    return this.buildAuthUserResponse(await this.authGet(accessToken, this.authUserPath()))
   }
 }
