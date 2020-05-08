@@ -1,0 +1,23 @@
+{
+  "name": "@openauth/facebook",
+  "version": "0.0.0",
+  "description": "OpenAuth facebook",
+  "keywords": [
+    "facebook",
+    "openauth",
+    "oauth",
+    "socialite",
+    "typescript"
+  ],
+  "author": "Changwan Jun <wan2land@gmail.com>",
+  "license": "MIT",
+  "repository": "https://github.com/wan2land/openauth/tree/master/packages/facebook",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "rimraf ./lib && tsc && babel ./src --out-dir ./lib --extensions \".ts\" --ignore \"src/**/*.test.ts\""
+  },
+  "dependencies": {
+    "@openauth/core": "^0.0.0"
+  }
+}
