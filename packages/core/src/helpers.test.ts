@@ -24,5 +24,12 @@ describe('testsuite of helpers', () => {
 
     expect(createUri('https://wani.kr/oauth?response_type=code', { clientId: 'CLIENT_ID', responseType: 'token' }))
       .toEqual('https://wani.kr/oauth?response_type=token&client_id=CLIENT_ID')
+
+    expect(createUri('https://wani.kr/oauth', { clientId: 'CLIENT_ID', responseType: null, ignoreNull: null, ignoreUndef: undefined }))
+      .toEqual('https://wani.kr/oauth?client_id=CLIENT_ID')
+
+    expect(createUri('https://wani.kr/oauth?response_type=code', { clientId: 'CLIENT_ID', responseType: null, ignoreNull: null, ignoreUndef: undefined }))
+      .toEqual('https://wani.kr/oauth?client_id=CLIENT_ID')
+
   })
 })

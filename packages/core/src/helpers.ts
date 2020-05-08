@@ -15,12 +15,18 @@ export function camelToUnderscore(data: Record<string, any>): Record<string, any
   }, {}) as any
 }
 
-export function createUri(baseUri: string, query: Record<string, string | undefined> = {}) {
+export function createUri(baseUri: string, query: Record<string, string | null | undefined> = {}) {
   const [url, baseQuery] = baseUri.split('?', 2)
-  const mergedQuery = {
+  const mergedQuery = Object.entries({
     ...baseQuery ? parse(baseQuery) : {},
     ...camelToUnderscore(query),
-  }
+  }).reduce<Record<string, string>>((carry, [key, value]) => {
+    if (value === null || typeof value === 'undefined') {
+      return carry
+    }
+    carry[key] = value
+    return carry
+  }, {})
   if (Object.keys(mergedQuery).length === 0) {
     return url
   }
