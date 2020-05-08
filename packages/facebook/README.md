@@ -15,3 +15,40 @@
 ```bash
 npm i @openauth/facebook
 ```
+
+## Usage
+
+```typescript
+import { FacebookOAuth } from '@openauth/facebook'
+
+const oauth = new FacebookOAuth({
+  clientId: 'client_id',
+  clientSecret: 'client_secret',
+  redirectUri: 'https://wani.kr/auth/facebook/callback',
+  scope: [
+    'public_profile',
+  ],
+})
+```
+
+OAuth login link.
+
+```typescript
+oauth.getAuthRequestUri() // print https://www.facebook.com/v7.0/dialog/oauth?response_type=code&client_id=client_id&redirect_uri=https%3A%2F%2Fwani.kr%2Fauth%2Ffacebook%2Fcallback&scope=public_profile
+```
+
+After logging in, you will be redirected to the `redirectUri` page with the `code` value.
+
+```typescript
+const code = 'AQAO3q3...'
+
+const response = await oauth.getAccessTokenResponse(code)
+console.log(response) // { accessToken: 'EAAD...', tokenType: 'bearer', expiresIn: 5165353 }
+```
+
+Save `accessToken` and use it when requesting API.
+
+```typescript
+const user = await oauth.getAuthUser(response.accessToken)
+console.log(user) // { id: '3000000', name: 'Cris Jun' }
+```
