@@ -3,7 +3,7 @@ import { BaseClient, ClientPath } from '@openauth/core'
 export class GoogleClient extends BaseClient {
 
   request<TData = any>(method: string, path: ClientPath, params: Record<string, any> = {}, headers: Record<string, any> = {}): Promise<{ headers: any, data: TData }> {
-    const url = `https://www.googleapis.com//${(typeof path === 'object' ? path.path : path).replace(/^\/+/, '')}`
+    const url = `https://www.googleapis.com/${(typeof path === 'object' ? path.path : path).replace(/^\/+/, '')}`
     const query = typeof path === 'object' ? path.query : {}
     if (method.toLocaleLowerCase() === 'get') {
       return this._axios.get(url, {

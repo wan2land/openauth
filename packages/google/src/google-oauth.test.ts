@@ -77,7 +77,7 @@ describe('testsuite of google oauth', () => {
     })
 
     expect(axios.get).toHaveBeenCalledTimes(1)
-    expect(axios.get).toHaveBeenCalledWith('https://www.googleapis.com//oauth2/v3/userinfo', {
+    expect(axios.get).toHaveBeenCalledWith('https://www.googleapis.com/oauth2/v3/userinfo', {
       headers: {
         Accept: 'application/json',
         Authorization: `Bearer ${ACCESS_TOKEN}`,
