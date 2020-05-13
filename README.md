@@ -22,6 +22,8 @@ Open Auth is a pure OAuth implementation that does not depend on a specific web 
 ### Services
 
 - [facebook](./packages/facebook) - Facebook Login Implementations.
+- [google](./packages/google) - Google Login Implementations.
+- [youtube](./packages/youtube) - Youtube Login Implementations.
 
 ### TODO
 
