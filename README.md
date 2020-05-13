@@ -33,7 +33,7 @@ Open Auth is a pure OAuth implementation that does not depend on a specific web 
   - [x] Facebook
   - [x] Google
   - [ ] Github
-  - [ ] Youtube
+  - [x] Youtube
   - [ ] Kakao
   - [ ] Naver
   - [ ] Line
