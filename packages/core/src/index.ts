@@ -1,8 +1,11 @@
 
-export { AxiosInstance as Client } from 'axios'
-
 export * from './interfaces/oauth'
+export { AxiosInstance } from 'axios'
 
-export { createUri } from './helpers'
+export { OAuthError } from './errors/oauth-error'
 
-export { BaseOAuth } from './base-oauth'
+export { assignQuery } from './helpers'
+
+export { BaseClient } from './base-client'
+
+export { OAuth2 } from './oauth2'

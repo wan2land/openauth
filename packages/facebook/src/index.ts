@@ -1,2 +1,3 @@
 
-export { FacebookOAuthOptions, FacebookOAuth } from './oauth'
+export { FacebookClient } from './facebook-client'
+export { FacebookOAuthOptions, FacebookOAuth } from './facebook-oauth'
