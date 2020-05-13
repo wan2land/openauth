@@ -22,3 +22,25 @@ Open Auth is a pure OAuth implementation that does not depend on a specific web 
 ### Services
 
 - [facebook](./packages/facebook) - Facebook Login Implementations.
+
+### TODO
+
+- [ ] OAuth 1.0 Support
+  - [ ] Twitter
+  - [ ] Trello
+  - [ ] Discogs
+- [x] OAuth 2.0 Support
+  - [x] Facebook
+  - [x] Google
+  - [ ] Github
+  - [ ] Youtube
+  - [ ] Kakao
+  - [ ] Naver
+  - [ ] Line
+  - [ ] Gitlab
+  - [ ] Bitbucket
+  - [ ] Linked In
+  - [ ] Slack
+  - [ ] Twitch
+  - [ ] Discord
+  - [ ] Steam
