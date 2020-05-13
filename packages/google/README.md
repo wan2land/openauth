@@ -5,7 +5,7 @@
   <a href="https://www.npmjs.com/package/@openauth/google"><img alt="Version" src="https://img.shields.io/npm/v/@openauth/google.svg?style=flat-square" /></a>
   <img alt="License" src="https://img.shields.io/npm/l/@openauth/google.svg?style=flat-square" />
   <img alt="Typescript" src="https://img.shields.io/badge/language-Typescript-007acc.svg?style=flat-square" />
-  <a href="https://david-dm.org/wan2land/openauth?path=packages/@openauth/google"><img alt="dependencies Status" src="https://img.shields.io/david/wan2land/openauth.svg?style=flat-square&path=packages/@openauth/google" /></a>
+  <a href="https://david-dm.org/wan2land/openauth?path=packages/google"><img alt="dependencies Status" src="https://img.shields.io/david/wan2land/openauth.svg?style=flat-square&path=packages/google" /></a>
 </p>
 
 **@openauth/google** is an implementation of Google OAuth.
