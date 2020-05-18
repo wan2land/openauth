@@ -1,7 +1,7 @@
 
 export interface OAuth {
   getAuthRequestUri(options?: AuthRequestUriOptions): Promise<string>
-  getAccessTokenResponse(code: string): Promise<AccessTokenResponse>
+  getAccessTokenResponse(code: string, options?: AccessTokenRespnoseOptions): Promise<AccessTokenResponse>
   getAuthUser(accessToken: string): Promise<AuthUser>
   getClient(accessToken?: string): Client
 }
@@ -9,11 +9,11 @@ export interface OAuth {
 export type ClientPath = string | { path: string, query: Record<string, any> }
 
 export interface Client {
-  get<TData = any>(path: ClientPath, headers?: Record<string, any>): Promise<{ headers: any, data: TData }>
-  post<TData = any>(path: ClientPath, params?: Record<string, any>, headers?: Record<string, any>): Promise<{ headers: any, data: TData }>
-  put<TData = any>(path: ClientPath, params?: Record<string, any>, headers?: Record<string, any>): Promise<{ headers: any, data: TData }>
-  delete<TData = any>(path: ClientPath, params?: Record<string, any>, headers?: Record<string, any>): Promise<{ headers: any, data: TData }>
-  request<TData = any>(method: string, path: ClientPath, params?: Record<string, any>, headers?: Record<string, any>): Promise<{ headers: any, data: TData }>
+  get<TData = any, THeaders = Record<string, string | string[]>>(path: ClientPath, headers?: Record<string, any>): Promise<{ headers: THeaders, data: TData }>
+  post<TData = any, THeaders = Record<string, string | string[]>>(path: ClientPath, params?: Record<string, any>, headers?: Record<string, any>): Promise<{ headers: THeaders, data: TData }>
+  put<TData = any, THeaders = Record<string, string | string[]>>(path: ClientPath, params?: Record<string, any>, headers?: Record<string, any>): Promise<{ headers: THeaders, data: TData }>
+  delete<TData = any, THeaders = Record<string, string | string[]>>(path: ClientPath, params?: Record<string, any>, headers?: Record<string, any>): Promise<{ headers: THeaders, data: TData }>
+  request<TData = any, THeaders = Record<string, string | string[]>>(method: string, path: ClientPath, params?: Record<string, any>, headers?: Record<string, any>): Promise<{ headers: THeaders, data: TData }>
 }
 
 export interface OAuthOptions {
@@ -29,6 +29,10 @@ export interface AuthRequestUriOptions {
   clientId?: string
   redirectUri?: string
   scope?: string[] | string
+  state?: string
+}
+
+export interface AccessTokenRespnoseOptions {
   state?: string
 }
 

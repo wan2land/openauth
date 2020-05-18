@@ -2,7 +2,15 @@ import axios, { AxiosInstance } from 'axios'
 
 import { BaseClient } from './base-client'
 import { assignQuery } from './helpers'
-import { AccessTokenResponse, AuthUser, Client, OAuth, OAuthOptions, AuthRequestUriOptions } from './interfaces/oauth'
+import {
+  AccessTokenRespnoseOptions,
+  AccessTokenResponse,
+  AuthRequestUriOptions,
+  AuthUser,
+  Client,
+  OAuth,
+  OAuthOptions,
+} from './interfaces/oauth'
 
 export class OAuth2 implements OAuth {
 
@@ -24,19 +32,36 @@ export class OAuth2 implements OAuth {
     return scopes.join(',')
   }
 
+  getAuthRequestFiels(options: AuthRequestUriOptions = {}): Record<string, any> {
+    const scope = options.scope ?? this.options.scope
+    return {
+      response_type: options.responseType ?? 'code',
+      client_id: options.clientId ?? this.options.clientId,
+      redirect_uri: options.redirectUri ?? this.options.redirectUri,
+      state: options.state,
+      scope: scope ? this.buildScopes(Array.isArray(scope) ? scope : [scope]) : null,
+    }
+  }
+
   /**
    * @see https://tools.ietf.org/html/rfc6749#section-2.3.1
    * @see https://tools.ietf.org/html/rfc6749#section-4.1.3
    */
-  async requestAccessToken(code: string): Promise<Record<string, any>> {
-    const { data } = await this._axiosClient.get(assignQuery(this.accessTokenRequestUri(), {
+  async requestAccessToken(code: string, options: AccessTokenRespnoseOptions = {}): Promise<Record<string, any>> {
+    const { data } = await this._axiosClient.get(
+      assignQuery(this.accessTokenRequestUri(), this.getAccessTokenFields(code, options))
+    )
+    return data
+  }
+
+  getAccessTokenFields(code: string, options: AccessTokenRespnoseOptions = {}): Record<string, any> {
+    return {
       client_id: this.options.clientId,
       client_secret: this.options.clientSecret,
       redirect_uri: this.options.redirectUri,
       code,
       grant_type: 'authorization_code',
-    }))
-    return data
+    }
   }
 
   /**
@@ -59,18 +84,11 @@ export class OAuth2 implements OAuth {
    * @see https://tools.ietf.org/html/rfc6749#section-4.1.1
    */
   getAuthRequestUri(options: AuthRequestUriOptions = {}): Promise<string> {
-    const scope = options.scope ?? this.options.scope
-    return Promise.resolve(assignQuery(this.authRequestUri(), {
-      response_type: options.responseType ?? 'code',
-      client_id: options.clientId ?? this.options.clientId,
-      redirect_uri: options.redirectUri ?? this.options.redirectUri,
-      state: options.state,
-      scope: scope ? this.buildScopes(Array.isArray(scope) ? scope : [scope]) : null,
-    }))
+    return Promise.resolve(assignQuery(this.authRequestUri(), this.getAuthRequestFiels(options)))
   }
 
-  async getAccessTokenResponse(code: string): Promise<AccessTokenResponse> {
-    return this.mapDataToAccessTokenResponse(await this.requestAccessToken(code))
+  async getAccessTokenResponse(code: string, options: AccessTokenRespnoseOptions = {}): Promise<AccessTokenResponse> {
+    return this.mapDataToAccessTokenResponse(await this.requestAccessToken(code, options))
   }
 
   getClient(accessToken?: string): Client {
