@@ -1,4 +1,4 @@
-import { AuthUser, Client, OAuth, OAuth2 } from '@openauth/core'
+import { AccessTokenRespnoseOptions, AuthUser, Client, OAuth, OAuth2 } from '@openauth/core'
 import { stringify } from 'querystring'
 
 import { GoogleClient } from './google-client'
@@ -21,14 +21,8 @@ export class GoogleOAuth extends OAuth2 implements OAuth {
     return new GoogleClient(this._axiosClient, accessToken)
   }
 
-  async requestAccessToken(code: string): Promise<Record<string, any>> {
-    const { data } = await this._axiosClient.post(this.accessTokenRequestUri(), stringify({
-      client_id: this.options.clientId,
-      client_secret: this.options.clientSecret,
-      redirect_uri: this.options.redirectUri,
-      code,
-      grant_type: 'authorization_code',
-    }))
+  async requestAccessToken(code: string, options: AccessTokenRespnoseOptions = {}): Promise<Record<string, any>> {
+    const { data } = await this._axiosClient.post(this.accessTokenRequestUri(), stringify(this.getAccessTokenFields(code, options)))
     return data
   }
 
