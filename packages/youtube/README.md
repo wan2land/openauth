@@ -25,8 +25,24 @@ const oauth = new YoutubeOAuth({
   clientId: 'client_id',
   clientSecret: 'client_secret',
   redirectUri: 'https://wani.kr/auth/youtube/callback',
-  scope: [
-    'public_profile',
-  ],
+})
+
+
+// 1. After getting auth request uri, connect.
+const redirectUri = await oauth.getAuthRequestUri()
+
+// 2. It redirects with the code, and replaces the access token with this code value.
+const { accessToken } = await oauth.getAccessTokenResponse(code)
+
+// 3. Get user profile.
+await oauth.getAuthUser(accessToken)
+
+// 4. Other API
+await oauth.getClient(accessToken).get({
+  path: 'youtube/v3/channels',
+  query: {
+    part: 'snippet',
+    mine: 'true',
+  },
 })
 ```

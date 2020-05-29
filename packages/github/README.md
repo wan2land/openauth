@@ -25,6 +25,23 @@ const oauth = new GithubOAuth({
   clientId: 'client_id',
   clientSecret: 'client_secret',
   redirectUri: 'https://wani.kr/auth/github/callback',
-  scope: ['read:user', 'user:email', 'user:follow'],
+  scope: [
+    'read:user',
+    'user:email',
+    'user:follow',
+  ],
 })
+
+// 1. After getting auth request uri, connect.
+const redirectUri = await oauth.getAuthRequestUri()
+
+// 2. It redirects with the code, and replaces the access token with this code value.
+const { accessToken } = await oauth.getAccessTokenResponse(code)
+
+// 3. Get user profile.
+await oauth.getAuthUser(accessToken)
+
+// 4. Other API
+await oauth.getClient(accessToken).get('user')
+
 ```
