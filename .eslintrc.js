@@ -3,8 +3,8 @@ module.exports = {
     jest: true,
   },
   extends: [
-    'graphity/javascript.js',
-    'graphity/typescript.js',
+    'stable',
+    'stable/typescript',
   ],
   ignorePatterns: [
     'node_modules/',
@@ -12,9 +12,5 @@ module.exports = {
   parserOptions: {
     tsconfigRootDir: __dirname,
     project: ['./tsconfig.json'],
-  },
-  rules: {
-    '@typescript-eslint/camelcase': 'off',
-    '@typescript-eslint/explicit-member-accessibility': ['error', { accessibility: 'no-public' }],
   },
 }
