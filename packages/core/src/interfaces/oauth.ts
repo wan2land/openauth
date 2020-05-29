@@ -33,6 +33,9 @@ export interface AuthRequestUriOptions {
 }
 
 export interface AccessTokenRespnoseOptions {
+  clientId?: string
+  clientSecret?: string
+  redirectUri?: string
   state?: string
 }
 

@@ -56,9 +56,9 @@ export class OAuth2 implements OAuth {
 
   getAccessTokenFields(code: string, options: AccessTokenRespnoseOptions = {}): Record<string, any> {
     return {
-      client_id: this.options.clientId,
-      client_secret: this.options.clientSecret,
-      redirect_uri: this.options.redirectUri,
+      client_id: options.clientId ?? this.options.clientId,
+      client_secret: options.clientSecret ?? this.options.clientSecret,
+      redirect_uri: options.redirectUri ?? this.options.redirectUri,
       code,
       grant_type: 'authorization_code',
     }
