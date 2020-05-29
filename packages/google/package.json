@@ -1,6 +1,6 @@
 {
   "name": "@openauth/google",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "OAuth google library.",
   "keywords": [
     "google",
@@ -19,6 +19,6 @@
     "build": "rimraf ./lib && tsc && babel ./src --out-dir ./lib --extensions \".ts\" --ignore \"src/**/*.test.ts\""
   },
   "dependencies": {
-    "@openauth/core": "^0.0.1"
+    "@openauth/core": "^0.1.0"
   }
 }
