@@ -1,6 +1,6 @@
 {
   "name": "@openauth/youtube",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "OAuth youtube library.",
   "keywords": [
     "youtube",
@@ -19,7 +19,7 @@
     "build": "rimraf ./lib && tsc && babel ./src --out-dir ./lib --extensions \".ts\" --ignore \"src/**/*.test.ts\""
   },
   "dependencies": {
-    "@openauth/core": "^0.2.0",
-    "@openauth/google": "^0.2.1"
+    "@openauth/core": "^0.2.2",
+    "@openauth/google": "^0.2.2"
   }
 }
