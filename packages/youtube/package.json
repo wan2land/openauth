@@ -21,5 +21,6 @@
   "dependencies": {
     "@openauth/core": "^0.2.2",
     "@openauth/google": "^0.2.2"
-  }
+  },
+  "gitHead": "7f2373f1073fb0ec9921728fd03ca776d052d89d"
 }
