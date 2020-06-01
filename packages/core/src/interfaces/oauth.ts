@@ -41,7 +41,7 @@ export interface AccessTokenRespnoseOptions {
 
 export interface AccessTokenResponse {
   accessToken: string
-  tokenType: string
+  tokenType?: string
   expiresIn?: number
   refreshToken?: string
   [key: string]: any
