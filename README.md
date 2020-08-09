@@ -25,6 +25,7 @@ Open Auth is a pure OAuth implementation that does not depend on a specific web 
 - [github](./packages/github) - Github Login Implementations.
 - [google](./packages/google) - Google Login Implementations.
 - [instagram](./packages/instagram) - Instagram Login Implementations.
+- [kakao](./packages/kakao) - Kakao Login Implementations.
 - [naver](./packages/naver) - Naver Login Implementations.
 - [youtube](./packages/youtube) - Youtube Login Implementations.
 
@@ -40,7 +41,7 @@ Open Auth is a pure OAuth implementation that does not depend on a specific web 
   - [x] Google
   - [x] Github
   - [x] Youtube
-  - [ ] Kakao
+  - [x] Kakao
   - [x] Naver
   - [ ] Line
   - [ ] Gitlab

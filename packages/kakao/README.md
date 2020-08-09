@@ -31,7 +31,7 @@ const oauth = new KakaoOAuth({
 OAuth login link.
 
 ```typescript
-oauth.getAuthRequestUri() // print https://nid.kakao.com/oauth2.0/authorize?...
+oauth.getAuthRequestUri() // print https://kauth.kakao.com/oauth/authorize?...
 ```
 
 After logging in, you will be redirected to the `redirectUri` page with the `code` value.
@@ -40,12 +40,12 @@ After logging in, you will be redirected to the `redirectUri` page with the `cod
 const code = 'AQAO3q3...'
 
 const response = await oauth.getAccessTokenResponse(code)
-console.log(response) // { accessToken: '...', refreshToken: '...', tokenType: 'bearer', expiresIn: 3600 }
+console.log(response) // { accessToken: '...', refreshToken: '...', tokenType: 'bearer', expiresIn: 21599, refreshTokenExpiresIn: 5183999 }
 ```
 
 Save `accessToken` and use it when requesting API.
 
 ```typescript
 const user = await oauth.getAuthUser(response.accessToken)
-console.log(user) // { id: '3000000', email: '...', name: '...' }
+console.log(user) // { id: '3000000', email: '...', nickname: '...' }
 ```
