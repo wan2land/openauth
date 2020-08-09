@@ -3,6 +3,8 @@ import { parse } from 'querystring'
 
 import { NaverOAuth } from './naver-oauth'
 
+const PLAYWRIGHT_HEADLESS = (process.env.PLAYWRIGHT_HEADLESS ?? '') !== 'false'
+
 const CLIENT_ID = process.env.NAVER_CLIENT_ID ?? ''
 const CLIENT_SECRET = process.env.NAVER_CLIENT_SECRET ?? ''
 const REDIRECT_URI = process.env.NAVER_REDIRECT_URI ?? ''
@@ -11,7 +13,7 @@ const NAVER_USERNAME = process.env.NAVER_USERNAME ?? ''
 const NAVER_PASSWORD = process.env.NAVER_PASSWORD ?? ''
 
 async function loginAndGetAuthCode(url: string, redirectUri: string): Promise<string> {
-  const browser = await chromium.launch()
+  const browser = await chromium.launch({ headless: PLAYWRIGHT_HEADLESS })
   const context = await browser.newContext()
   const page = await context.newPage()
 

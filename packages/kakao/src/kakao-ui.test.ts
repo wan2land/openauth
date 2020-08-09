@@ -3,6 +3,8 @@ import { parse } from 'querystring'
 
 import { KakaoOAuth } from './kakao-oauth'
 
+const PLAYWRIGHT_HEADLESS = (process.env.PLAYWRIGHT_HEADLESS ?? '') !== 'false'
+
 const CLIENT_ID = process.env.KAKAO_CLIENT_ID ?? ''
 const CLIENT_SECRET = process.env.KAKAO_CLIENT_SECRET ?? ''
 const REDIRECT_URI = process.env.KAKAO_REDIRECT_URI ?? ''
@@ -11,7 +13,7 @@ const KAKAO_USERNAME = process.env.KAKAO_USERNAME ?? ''
 const KAKAO_PASSWORD = process.env.KAKAO_PASSWORD ?? ''
 
 async function loginAndGetAuthCode(url: string, redirectUri: string): Promise<string> {
-  const browser = await chromium.launch()
+  const browser = await chromium.launch({ headless: PLAYWRIGHT_HEADLESS })
   const context = await browser.newContext()
   const page = await context.newPage()
 
