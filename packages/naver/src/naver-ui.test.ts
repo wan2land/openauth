@@ -1,6 +1,7 @@
-import { NaverOAuth } from './naver-oauth'
-import { parse } from 'querystring'
 import { chromium } from 'playwright'
+import { parse } from 'querystring'
+
+import { NaverOAuth } from './naver-oauth'
 
 const CLIENT_ID = process.env.NAVER_CLIENT_ID ?? ''
 const CLIENT_SECRET = process.env.NAVER_CLIENT_SECRET ?? ''
@@ -37,7 +38,7 @@ async function loginAndGetAuthCode(url: string, redirectUri: string): Promise<st
 
   await Promise.all([
     page.waitForNavigation(),
-    await page.click('button.btn_unit_on'),
+    page.click('button.btn_unit_on'),
   ])
 
   if (page.url().startsWith(redirectUri)) {

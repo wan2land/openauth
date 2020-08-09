@@ -1,9 +1,9 @@
 
-export interface OAuth {
+export interface OAuth<TClient extends Client = Client> {
   getAuthRequestUri(options?: AuthRequestUriOptions): Promise<string>
   getAccessTokenResponse(code: string, options?: AccessTokenRespnoseOptions): Promise<AccessTokenResponse>
   getAuthUser(accessToken: string): Promise<AuthUser>
-  getClient(accessToken?: string): Client
+  getClient(accessToken?: string): TClient
 }
 
 export type ClientPath = string | { path: string, query: Record<string, any> }
@@ -18,7 +18,7 @@ export interface Client {
 
 export interface OAuthOptions {
   clientId: string
-  clientSecret: string
+  clientSecret?: string
   redirectUri: string
   code?: string
   scope?: string[] | string

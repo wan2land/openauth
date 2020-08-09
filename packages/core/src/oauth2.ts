@@ -12,10 +12,10 @@ import {
   OAuthOptions,
 } from './interfaces/oauth'
 
-export class OAuth2 implements OAuth {
+export class OAuth2<TClient extends Client = Client> implements OAuth<TClient> {
 
   _axiosClient: AxiosInstance = axios
-  _unauthClient?: Client
+  _unauthClient?: TClient
 
   constructor(public options: OAuthOptions) {
   }
@@ -55,9 +55,10 @@ export class OAuth2 implements OAuth {
   }
 
   getAccessTokenFields(code: string, options: AccessTokenRespnoseOptions = {}): Record<string, any> {
+    const clientSecret = options.clientSecret ?? this.options.clientSecret
     return {
       client_id: options.clientId ?? this.options.clientId,
-      client_secret: options.clientSecret ?? this.options.clientSecret,
+      ...clientSecret ? { client_secret: clientSecret } : {},
       redirect_uri: options.redirectUri ?? this.options.redirectUri,
       code,
       grant_type: 'authorization_code',
@@ -76,8 +77,8 @@ export class OAuth2 implements OAuth {
     }
   }
 
-  createClient(accessToken?: string): Client {
-    return new BaseClient(this._axiosClient, accessToken)
+  createClient(accessToken?: string): TClient {
+    return (new BaseClient(this._axiosClient, accessToken)) as any as TClient
   }
 
   /**
@@ -91,7 +92,7 @@ export class OAuth2 implements OAuth {
     return this.mapDataToAccessTokenResponse(await this.requestAccessToken(code, options))
   }
 
-  getClient(accessToken?: string): Client {
+  getClient(accessToken?: string): TClient {
     if (!accessToken) {
       return this._unauthClient ?? (this._unauthClient = this.createClient())
     }
