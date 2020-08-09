@@ -49,7 +49,7 @@ async function loginAndGetAuthCode(url: string, redirectUri: string): Promise<st
   throw new Error('fail to login')
 }
 
-describe('@openauth/naver NaverOAuth', () => {
+describe('@openauth/naver ui test', () => {
 
   if (!CLIENT_ID || !CLIENT_SECRET) {
     it.skip('skip', () => void 0)

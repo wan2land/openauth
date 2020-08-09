@@ -5,7 +5,7 @@ import axios from '@openauth/core/node_modules/axios'
 
 jest.mock('@openauth/core/node_modules/axios')
 
-describe('testsuite of naver oauth', () => {
+describe('@openauth/naver NaverOAuth', () => {
   const CLIENT_ID = '1234567890'
   const CLIENT_SECRET = '1234567890abcdefghijklmnopqrstuvwxyz'
   const REDIRECT_URI = 'https://wani.kr/auth/naver/callback'
@@ -32,7 +32,7 @@ describe('testsuite of naver oauth', () => {
       },
     })).mockClear()
 
-    const AUTHCODE = 'TOKENFROMNAVER_1234567890'
+    const AUTHCODE = 'TOKEN_FROM_NAVER_1234567890'
     await expect(oauth.getAccessTokenResponse(AUTHCODE)).resolves.toEqual({
       accessToken: 'ACCESSTOKEN_1234567890',
       refreshToken: 'REFRESHTOKEN_1234567890',

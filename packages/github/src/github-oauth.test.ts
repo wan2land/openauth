@@ -5,7 +5,7 @@ import { GithubOAuth } from './github-oauth'
 
 jest.mock('@openauth/core/node_modules/axios')
 
-describe('testsuite of github oauth', () => {
+describe('@openauth/github GithubOAuth', () => {
   const CLIENT_ID = '1234567890'
   const CLIENT_SECRET = '1234567890abcdefghijklmnopqrstuvwxyz'
   const REDIRECT_URI = 'https://wani.kr/auth/github/callback'
@@ -28,7 +28,7 @@ describe('testsuite of github oauth', () => {
       data: 'access_token=ACCESSTOKEN_1234567890&expires_in=28800&refresh_token=REFRESHTOKEN_1234567890&refresh_token_expires_in=15897599&scope=&token_type=bearer',
     })).mockClear()
 
-    const AUTHCODE = 'TOKENFROMFACEBOOK_1234567890'
+    const AUTHCODE = 'TOKEN_FROM_GITHUB_1234567890'
     const state = 'randomstring'
     await expect(oauth.getAccessTokenResponse(AUTHCODE, { state })).resolves.toEqual({
       accessToken: 'ACCESSTOKEN_1234567890',

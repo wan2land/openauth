@@ -40,7 +40,7 @@ Open Auth is a pure OAuth implementation that does not depend on a specific web 
   - [x] Github
   - [x] Youtube
   - [ ] Kakao
-  - [ ] Naver
+  - [x] Naver
   - [ ] Line
   - [ ] Gitlab
   - [ ] Bitbucket

@@ -5,7 +5,7 @@ import axios from '@openauth/core/node_modules/axios'
 
 jest.mock('@openauth/core/node_modules/axios')
 
-describe('testsuite of facebook oauth', () => {
+describe('@openauth/facebook FacebookOAuth', () => {
   const CLIENT_ID = '1234567890'
   const CLIENT_SECRET = '1234567890abcdefghijklmnopqrstuvwxyz'
   const REDIRECT_URI = 'https://wani.kr/auth/facebook/callback'
@@ -31,7 +31,7 @@ describe('testsuite of facebook oauth', () => {
       },
     })).mockClear()
 
-    const AUTHCODE = 'TOKENFROMFACEBOOK_1234567890'
+    const AUTHCODE = 'TOKEN_FROM_FACEBOOK_1234567890'
     await expect(oauth.getAccessTokenResponse(AUTHCODE)).resolves.toEqual({
       accessToken: 'ACCESSTOKEN_1234567890',
       tokenType: 'bearer',

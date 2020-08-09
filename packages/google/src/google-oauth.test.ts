@@ -5,7 +5,7 @@ import axios from '@openauth/core/node_modules/axios'
 
 jest.mock('@openauth/core/node_modules/axios')
 
-describe('testsuite of google oauth', () => {
+describe('@openauth/google GoogleOAuth', () => {
   const CLIENT_ID = '1234567890'
   const CLIENT_SECRET = '1234567890abcdefghijklmnopqrstuvwxyz'
   const REDIRECT_URI = 'https://wani.kr/auth/google/callback'
@@ -33,7 +33,7 @@ describe('testsuite of google oauth', () => {
       },
     })).mockClear()
 
-    const AUTHCODE = 'TOKENFROMFACEBOOK_1234567890'
+    const AUTHCODE = 'TOKEN_FROM_GOOGLE_1234567890'
     await expect(oauth.getAccessTokenResponse(AUTHCODE)).resolves.toEqual({
       accessToken: 'ACCESSTOKEN_1234567890',
       tokenType: 'Bearer',
@@ -58,7 +58,7 @@ describe('testsuite of google oauth', () => {
       },
     })).mockClear()
 
-    const ACCESS_TOKEN = 'ya29.a0AfH6SMCl9aeMTv30g4VYkJblkKidgvL3QCO0sbFQzXzeeNbrALFZr5ixY5HX2j-Cl1OZny-h-E_Bu4fqkwEBnc4WCTZYNjxRE8Fibuqk2SN5NegLlM6Sp2ZIdecWpKMhaBmvbE-a6rFzVCu10PlZ-acRS2gJGPxOFx0' // 'ACCESSTOKEN_1234567890'
+    const ACCESS_TOKEN = 'ACCESSTOKEN_1234567890'
     await expect(oauth.getAuthUser(ACCESS_TOKEN)).resolves.toEqual({
       id: '123456789',
       email: 'wan2land@gmail.com',
