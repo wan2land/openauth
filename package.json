@@ -20,7 +20,7 @@
     "@babel/plugin-proposal-optional-chaining": "7.12.7",
     "@babel/preset-env": "7.12.11",
     "@babel/preset-typescript": "7.12.7",
-    "@types/jest": "26.0.19",
+    "@types/jest": "26.0.20",
     "@types/node": "12.19.12",
     "env-cmd": "10.1.0",
     "eslint": "7.17.0",
