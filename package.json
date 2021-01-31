@@ -23,7 +23,7 @@
     "@types/jest": "26.0.20",
     "@types/node": "12.19.15",
     "env-cmd": "10.1.0",
-    "eslint": "7.18.0",
+    "eslint": "7.19.0",
     "eslint-config-stable": "0.8.0",
     "jest": "26.6.3",
     "lerna": "3.22.1",
