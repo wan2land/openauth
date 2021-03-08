@@ -84,5 +84,5 @@ describe('@openauth/naver ui test', () => {
     expect(authUser.id).toEqual(authUser.raw.id)
     expect(authUser.email).toEqual(authUser.raw.email)
     expect(authUser.name).toEqual(authUser.raw.name)
-  })
+  }, 30000)
 })
