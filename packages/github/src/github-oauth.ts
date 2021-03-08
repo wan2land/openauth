@@ -32,7 +32,7 @@ export class GithubOAuth extends OAuth2 implements OAuth {
       client_secret: this.options.clientSecret,
       redirect_uri: this.options.redirectUri,
       code,
-      ...(options.state ? { state: options.state } : {}),
+      ...options.state ? { state: options.state } : {},
     }
   }
 
@@ -40,7 +40,7 @@ export class GithubOAuth extends OAuth2 implements OAuth {
     return {
       accessToken: body.access_token,
       tokenType: body.token_type,
-      expiresIn: +body.expires_in,
+      ...body.expires_in ? { expiresIn: +body.expires_in } : {},
       refreshToken: body.refresh_token,
     }
   }
