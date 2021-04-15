@@ -31,7 +31,7 @@
     "lerna-wizard": "1.1.1",
     "playwright": "1.10.0",
     "rimraf": "3.0.2",
-    "ts-jest": "26.5.4",
+    "ts-jest": "26.5.5",
     "typescript": "4.2.4"
   }
 }
